@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .models import Question
+
 def index(request):
-    return HttpResponse("ビューのインデックス関数のレスポンス")
+    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    output = ', '.join([q.question_text for q in latest_question_list])
+    return HttpResponse(output)
 
 def detail(request, question_id):
     return HttpResponse("あなたは %s 番のQuestionを見ています" % question_id)
@@ -13,3 +17,4 @@ def results(request, question_id):
 
 def vote(request, question_id):
     return HttpResponse("あなたは %s 番目のQuestionに投票する" % question_id)
+
