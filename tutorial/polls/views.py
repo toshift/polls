@@ -12,7 +12,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published questions. 未来は表示しない"""
-        return Question.objects.filter(pub_date___lte=timezone.now().order_by('-pub_date'))[:5]
+        return Question.objects.filter(pub_date___lte=timezone.now()).order_by('-pub_date'))[:5]
 
 class DetailView(generic.DetailView):
     model = Question
