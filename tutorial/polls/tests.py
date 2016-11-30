@@ -23,7 +23,7 @@ class QuestionMethodTest(TestCase):
         self.assertIs(recent_question.was_published_recently(),True)
 
 def create_question(question_text, days):
-    time = timezone.now() + datetime.timedelata(days=days)
+    time = timezone.now() + datetime.timedelta(days=days)
     return Question.objects.create(question_text=question_text,pub_date=time)
 
 class QuestionViewTests(TestCase):
