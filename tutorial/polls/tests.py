@@ -31,7 +31,7 @@ class QuestionViewTests(TestCase):
     def test_index_view_with_no_questions(self):
         response = self.client.get(reverse('polls:index'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "ポールがない？わっつ")
+        self.assertContains(response, "なにもQUESTIONがありません。")
         self.assertQuerysetEqual(response.context['latest_question_list'],[])
 
     def test_index_view_with_a_past_question(self):
